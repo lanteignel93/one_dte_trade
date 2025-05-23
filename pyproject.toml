@@ -1,0 +1,27 @@
+[project]
+name = "one_dte_trade"
+version = "0.1.0"
+authors = [
+  { name="Laurent Lanteigne", email="laurent.lanteigne@gmail.com" },
+]
+dependencies = [
+  "polars==1.14.0",
+  "numpy==1.26.4",
+  "scipy==1.14.1",
+  "matplotlib==3.9.2",
+  "intake",
+  "seaborn",
+  "pyarrow"
+]
+description = "One DTE Trading Strategy"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
