@@ -1,7 +1,6 @@
 # __init__.py
 # This file is at the root of your package (e.g., 20250515_1DTE_trade/__init__.py)
 import polars as pl
-import json  # Not strictly needed here if load_all_project_configs handles file reading
 import os
 
 # Import your dataclass definitions from config.py (in the same package)
@@ -16,7 +15,7 @@ from .config import (
 # Import the loader function from utils.config_loader.py (in a subpackage)
 from .utils.config_loader import load_all_project_configs
 from .utils.decorators import clock, logger, requires_columns
-from .utils.mock_loader import MockCatLoader 
+from .utils.mock_loader import MockCatLoader
 
 print("Initializing package and loading configurations...")
 
@@ -36,13 +35,17 @@ CONFIG_CLASS_MAP = {
 # and the 'configs' directory is a subdirectory of this package.
 PACKAGE_ROOT = os.path.dirname(os.path.abspath(__file__))
 JSON_CONFIG_PATH = os.path.join(PACKAGE_ROOT, "configs", "project_settings.json")
-CACHED_DATA_DIR = os.path.join(PACKAGE_ROOT, "cached_data") 
+CACHED_DATA_DIR = os.path.join(PACKAGE_ROOT, "cached_data")
 
 # --- Instantiate MockCatLoader ---
 # Define paths to your cached Parquet files
 MOCK_DATA_PATHS = {
-    "om_int_security_price": os.path.join(CACHED_DATA_DIR, "cached_om_int_security_price.parquet"),
-    "om_int_option_price": os.path.join(CACHED_DATA_DIR, "cached_om_int_option_price.parquet"),
+    "om_int_security_price": os.path.join(
+        CACHED_DATA_DIR, "cached_om_int_security_price.parquet"
+    ),
+    "om_int_option_price": os.path.join(
+        CACHED_DATA_DIR, "cached_om_int_option_price.parquet"
+    ),
     # Add other data sources if you cache them
 }
 
@@ -52,10 +55,15 @@ try:
     print("MockCatLoader initialized. Will use cached Parquet files.")
 except Exception as e:
     print(f"CRITICAL ERROR: Failed to initialize MockCatLoader. Error: {e}")
+
     # Fallback or raise error if data loading is critical
-    class FallbackCatLoader: # A dummy loader that returns empty DataFrames
-        def om_int_security_price(self): return pl.DataFrame()
-        def om_int_option_price(self): return pl.DataFrame()
+    class FallbackCatLoader:  # A dummy loader that returns empty DataFrames
+        def om_int_security_price(self):
+            return pl.DataFrame()
+
+        def om_int_option_price(self):
+            return pl.DataFrame()
+
     cat = FallbackCatLoader()
     print("WARNING: Using FallbackCatLoader due to MockCatLoader initialization error.")
 

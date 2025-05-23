@@ -124,7 +124,7 @@ class Analyzer:
                     *[
                         pl.col(col_name)
                         .quantile(p, interpolation="linear")
-                        .alias(f"p{int(p*100)}")
+                        .alias(f"p{int(p * 100)}")
                         for p in current_percentiles
                     ],
                     pl.col(col_name).max().alias("max"),
@@ -260,8 +260,8 @@ class Analyzer:
             "Win Rate (%)",
             "Max Daily Win",
             "Max Daily Loss",
-            f"Worst 5-Day Cum PnL (% of {portfolio_base:,.0f})",
-            f"Worst 20-Day Cum PnL (% of {portfolio_base:,.0f})",
+            "Worst 5-Day Cum PnL (%)",
+            "Worst 20-Day Cum PnL (%)",
             "Skewness",
             "Kurtosis",
             "Average Win Amount",
@@ -929,7 +929,7 @@ class Analyzer:
                 f"Analyzer Warning: Could not set seaborn style '{plot_style}'. Error: {e}"
             )
 
-        base_decile_qcut_labels = [f"D{i+1}" for i in range(num_deciles)]
+        base_decile_qcut_labels = [f"D{i + 1}" for i in range(num_deciles)]
 
         for base_signal_name in signal_bases:
             signal_strength_col = base_signal_name
@@ -1207,7 +1207,7 @@ class Analyzer:
                         conf_val,
                         alpha=0.1,
                         color="gray",
-                        label=f"{int(confidence_level*100)}% CI",
+                        label=f"{int(confidence_level * 100)}% CI",
                     )
 
             plot_title = f"Autocorrelation Function (ACF) for {signal_col.replace('_', ' ').title()}"
@@ -1298,7 +1298,7 @@ class Analyzer:
                 f"Analyzer Warning: Could not set seaborn style '{plot_style}'. Error: {e}"
             )
 
-        base_decile_qcut_labels = [f"D{i+1}" for i in range(num_deciles)]
+        base_decile_qcut_labels = [f"D{i + 1}" for i in range(num_deciles)]
 
         for decile_col_name in columns_to_decile:
             if decile_col_name not in df.columns:
@@ -1428,14 +1428,14 @@ class Analyzer:
                         color=current_bar_color,
                         errorbar=None,
                     )
-                    plot_title = f"Sharpe Ratio of '{base_signal_name}' PnL\nby Deciles of '{decile_col_name.replace('_',' ').title()}' ({title_suffix})"
+                    plot_title = f"Sharpe Ratio of '{base_signal_name}' PnL\nby Deciles of '{decile_col_name.replace('_', ' ').title()}' ({title_suffix})"
                     plt.title(
                         plot_title,
                         fontsize=getattr(self.config, "DEFAULT_TITLE_FONTSIZE", 16),
                         pad=15,
                     )
                     plt.xlabel(
-                        f"Decile Range of {decile_col_name.replace('_',' ').title()}",
+                        f"Decile Range of {decile_col_name.replace('_', ' ').title()}",
                         fontsize=getattr(self.config, "DEFAULT_LABEL_FONTSIZE", 12),
                         labelpad=10,
                     )
@@ -1506,12 +1506,12 @@ class Analyzer:
 
         bin_labels = [f"<= {sorted_breaks[0]:.2f}"]
         for i in range(len(sorted_breaks) - 1):
-            bin_labels.append(f"({sorted_breaks[i]:.2f}, {sorted_breaks[i+1]:.2f}]")
+            bin_labels.append(f"({sorted_breaks[i]:.2f}, {sorted_breaks[i + 1]:.2f}]")
         bin_labels.append(f"> {sorted_breaks[-1]:.2f}")
 
         if len(bin_labels) != (len(sorted_breaks) + 1):
             print(
-                f"Analyzer Error: Mismatch in generated bin labels ({len(bin_labels)}) and expected bins ({len(sorted_breaks)+1}). Check breaks."
+                f"Analyzer Error: Mismatch in generated bin labels ({len(bin_labels)}) and expected bins ({len(sorted_breaks) + 1}). Check breaks."
             )
             return
 
@@ -1662,14 +1662,14 @@ class Analyzer:
                         color=current_bar_color,
                         errorbar=None,
                     )
-                    plot_title = f"Sharpe Ratio of '{base_signal_name}' PnL\nby Fixed Bins of '{bin_col_name.replace('_',' ').title()}' ({title_suffix})"
+                    plot_title = f"Sharpe Ratio of '{base_signal_name}' PnL\nby Fixed Bins of '{bin_col_name.replace('_', ' ').title()}' ({title_suffix})"
                     plt.title(
                         plot_title,
                         fontsize=getattr(self.config, "DEFAULT_TITLE_FONTSIZE", 16),
                         pad=15,
                     )
                     plt.xlabel(
-                        f"Fixed Bin Range of {bin_col_name.replace('_',' ').title()}",
+                        f"Fixed Bin Range of {bin_col_name.replace('_', ' ').title()}",
                         fontsize=getattr(self.config, "DEFAULT_LABEL_FONTSIZE", 12),
                         labelpad=10,
                     )

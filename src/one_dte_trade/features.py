@@ -1,5 +1,6 @@
 import polars as pl
 from intake import Catalog  # For type hinting self.cat
+import numpy as np
 
 # Import the global/default cat loader
 from . import cat as global_cat_loader

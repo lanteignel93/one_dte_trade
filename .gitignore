@@ -161,15 +161,15 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Data 
+# Data
 .csv
 .parquet
 
-# Images 
-.png 
-.jpeg 
-.jpg 
+# Images
+.png
+.jpeg
+.jpg
 .git
 
-# Vim 
+# Vim
 .session.vim
