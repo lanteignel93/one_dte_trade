@@ -1,0 +1,71 @@
+{
+    "StraddleDataConfig": {
+        "DATEMIN_TUPLE": [
+            2023,
+            1,
+            1
+        ],
+        "TICKER_ID": 108105,
+        "DATE_PROBLEMS": [
+            "2025-05-12",
+            "2025-01-08"
+        ]
+    },
+    "SignalGeneratorConfig": {
+        "LAGS": [
+            1,
+            2,
+            3
+        ],
+        "SIGNAL_WEIGHTS": [
+            0.6,
+            0.3,
+            0.1
+        ]
+    },
+    "BacktesterConfig": {
+        "CAPITAL": 1000000.0,
+        "WEIGHT_PER_TRADE": 0.05
+    },
+    "FeatureBuilderConfig": {
+        "VOL_EWMA": 5,
+        "VOL_COLS": [
+            "VIX",
+            "VVIX",
+            "VIX_TS"
+        ],
+        "ZSCORE_TIME": 252
+    },
+    "AnalyzerConfig": {
+        "DEFAULT_ANNUALIZATION_FACTOR": 252,
+        "DEFAULT_RISK_FREE_RATE_DAILY": 0.0,
+        "DEFAULT_PORTFOLIO_SIZE_FOR_DRAWDOWN": 1000000.0,
+        "DEFAULT_PLOT_STYLE": "whitegrid",
+        "DEFAULT_FIGSIZE": [
+            14,
+            7
+        ],
+        "DEFAULT_TITLE_FONTSIZE": 16,
+        "DEFAULT_LABEL_FONTSIZE": 12,
+        "DEFAULT_DATE_FORMAT_STR": "%Y-%m-%d",
+        "DEFAULT_HISTOGRAM_BINS": "auto",
+        "DEFAULT_PERCENTILES": [
+            0.01,
+            0.05,
+            0.25,
+            0.5,
+            0.75,
+            0.95,
+            0.99
+        ],
+        "DEFAULT_TIMESERIES_LINE_COLOR": "maroon",
+        "DEFAULT_HISTOGRAM_COLOR": "cornflowerblue",
+        "DEFAULT_KDE_COLOR": "red",
+        "DEFAULT_PNL_BAR_POSITIVE_COLOR": "mediumseagreen",
+        "DEFAULT_PNL_BAR_NEGATIVE_COLOR": "lightcoral",
+        "DEFAULT_DECILE_BAR_COLOR_LONG": "mediumseagreen",
+        "DEFAULT_DECILE_BAR_COLOR_SHORT": "lightcoral",
+        "DEFAULT_ACF_LINE_COLOR": "steelblue",
+        "DEFAULT_ACF_MARKER_COLOR": "crimson"
+    }
+}
